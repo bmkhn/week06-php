@@ -6,110 +6,37 @@
     <title>Part I - Practice Set 01</title>
 </head>
 <body>
-    <!-- Question 1 -->
-    <h2>Question 1: What is the output of print_r($person);?</h2>
-    <?php
-        class Person {
-            public $name;
-            public $age;
-        }
-
-        $person = new Person(); 
-        $person->name = "Alice"; 
-        $person->age = 25;
-
-        // Answer: Person Object ( [name] => Alice [age] => 25 )
-        print_r($person);
-    ?>
+    <h2>Triangle Area Calculator</h2>
     
-    <!-- Question 2 -->
-    <h2>Question 2: What is the output of var_dump($person);?</h2>
+    <form action="" method="post">
+        <label for="side1">Side 1:</label>
+        <input type="number" id="side1" name="side1" step="0.01" required><br><br>
+        
+        <label for="side2">Side 2:</label>
+        <input type="number" id="side2" name="side2" step="0.01" required><br><br>
+        
+        <label for="side3">Side 3:</label>
+        <input type="number" id="side3" name="side3" step="0.01" required><br><br>
+        
+        <input type="submit" value="Calculate Area">
+    </form>
+
     <?php
-        // Answer: object(Person)#1 (2) { ["name"]=> string(5) "Alice" ["age"]=> int(25) }
-        var_dump($person);
-    ?>
-    
-    <!-- Question 3 -->
-    <h2>Question 3: What is the output of var_dump($cashOnHand);?</h2>
-    <?php
-        $name = "Brad";
-        $age = 40;
-        $hasKids = true;
-        $cashOnHand = 10.5;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $side1 = (float)$_POST['side1'];
+        $side2 = (float)$_POST['side2'];
+        $side3 = (float)$_POST['side3'];
 
-        // Answer: float(10.5)
-        var_dump($cashOnHand);
-    ?>
+        // Calculate semi-perimeter (s)
+        $s = ($side1 + $side2 + $side3) / 2;
 
-    <!-- Question 4 -->
-    <h2>Question 4: What character is used to concatenate strings?</h2>
-    <?php
-        echo "$name is $age years old<br>";
-        echo "${name} is ${age} years old<br>";
-        echo '<h3>' . $name . ' is ' . $age . ' years old</h3>';
+        // Calculate the area using Heron's formula without sqrt function
+        $areaSquared = $s * ($s - $side1) * ($s - $side2) * ($s - $side3);
+        $area = pow($areaSquared, 0.5); // Using pow function to calculate square root
 
-        // Answer: Dot(.)
-        echo "The character used to concatenate strings in PHP is the dot (.)";
-    ?>
-
-    <!-- Question 5 -->
-    <h2>Question 5: What is the output of echo HOST;?</h2>
-    <?php
-        define('HOST', 'localhost');
-        define('USER', 'root');
-
-        // Answer: localhost
-        echo HOST;
-    ?>
-
-    <!-- Question 6 -->
-    <h2>Question 6:</h2>
-    <?php
-    ?>
-
-    <!-- Question 7 -->
-    <h2>Question 7:</h2>
-    <?php
-    ?>
-
-    <!-- Question 8 -->
-    <h2>Question 8:</h2>
-    <?php
-    ?>
-
-    <!-- Question 9 -->
-    <h2>Question 9:</h2>
-    <?php
-    ?>
-
-    <!-- Question 10 -->
-    <h2>Question 10:</h2>
-    <?php
-    ?>
-
-    <!-- Question 11 -->
-    <h2>Question 11:</h2>
-    <?php
-    ?>
-
-    <!-- Question 12 -->
-    <h2>Question 12:</h2>
-    <?php
-    ?>
-
-    <!-- Question 13 -->
-    <h2>Question 13:</h2>
-    <?php
-    ?>
-
-    <!-- Question 14 -->
-    <h2>Question 14:</h2>
-    <?php
-    ?>
-
-    <!-- Question 15 -->
-    <h2>Question 15:</h2>
-    <?php
+        // Display the result formatted to two decimal places
+        echo "<h2>Area of the Triangle: " . number_format($area, 2) . " square units</h2>";
+    }
     ?>
 </body>
 </html>
