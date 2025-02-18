@@ -36,31 +36,36 @@ Answer: Notice: Undefined offset: 3
 Question 9: What are the keys in $person array?
 Answer: first_name, last_name, age
 
-
-
-
-
-$colors = [
-    1 => 'red',
-    2 => 'green',
-    3 => 'blue',
-];
-
-Question 10: In PHP, how will you change the green into white in $colors
-array?
-
-$hex = [
-    'red' => '#f00',
-    'green' => '#0f0',
-    'blue' =>
-]
+Question 10: In PHP, how will you change the green into white in $colors array?
+Answer: $colors[2] = 'white';
 
 Question 11: What is the output of echo $hex['red'];?
+Answer: #f00
 
 Question 12: What is the output of echo $matrix[1][2];?
+Answer: 6
 
 Question 13: What is the output of echo $people[0]['first_name'];?
+Answer: Maeve
 
 Question 14: What is the output of echo $people[2]['email'];?
+Answer: jane@gmail.com
 
 Question 15: What is the output of var_dump($chunkedArray);?
+Answer: 
+array(2) {
+    [0]=>
+    array(2) {
+        [0]=>
+        string(6) "banana"
+        [1]=>
+        string(5) "grape"
+    }
+    [1]=>
+    array(2) {
+        [0]=>
+        string(5) "mango"
+        [1]=>
+        string(9) "raspberry"
+    }
+}
